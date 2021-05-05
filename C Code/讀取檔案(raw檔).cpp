@@ -33,70 +33,70 @@ int main()
 	    return 0;
 	}
 	else
-    {
-        printf("Read OK\n\n");
-    } 
+	{
+	printf("Read OK\n\n");
+	} 
 	
 	 // turn the data into array   	
 	ptr = (BYTE*)malloc( width * height * sizeof(BYTE) );
 	
 	// the first 512 data we do not use it 
-    for(i = 0; i < 512; i++){
-        fread( ptr, 1, 1, fp );
-        if (k == 0 || k == 3 || k == 6 || k == 7 || k == 9 )
-        {
-            data_ascii[num_a] = *ptr;
-            num_a ++;
-        }
-        else {
-            data_number[num_n] = *ptr; 
-            num_n ++;
-        }   
-        ptr++;
-		num ++;
-		if (num == data[k]){
-			k ++;
-			num = 0;
-        }
-    }
+	for(i = 0; i < 512; i++){
+		fread( ptr, 1, 1, fp );
+		if (k == 0 || k == 3 || k == 6 || k == 7 || k == 9 )
+		{
+		    data_ascii[num_a] = *ptr;
+		    num_a ++;
+		}
+		else {
+		    data_number[num_n] = *ptr; 
+		    num_n ++;
+		}   
+		ptr++;
+			num ++;
+			if (num == data[k]){
+				k ++;
+				num = 0;
+		}
+	}
     
-    // save the biomedical signals
+   	// save the biomedical signals
 	for( i = 0; i < height; i++ )
 	{
 		for( j = 0; j < width ; j ++ )
 		{
-    		fread( ptr, 1, 1, fp );
-    		B[i][j]= *ptr;	 //array
-    		ptr++;
+			fread( ptr, 1, 1, fp );
+			B[i][j]= *ptr;	 //array
+			ptr++;
 		}
 
 	}
 	fclose(fp);
 	
-    num_a = 0; num_n = 0;k = 0;num = 0;
+    	num_a = 0; num_n = 0;k = 0;num = 0;
 	if( ( fp = fopen( outpath,"wb" ) ) == NULL )
 	{
 	    printf("can not create the raw_image : %s\n", outpath );
 	    return 0;
 	}
     
-    for(i = 0; i < 512; i++){
-     if (k == 0 || k == 3 || k == 6 || k == 7 || k == 9 )
-     {
-    	fprintf(fp, "%c", data_ascii[num_a]);  
-        num_a ++;
-     }
-     else {
-        fprintf(fp, "%d", data_number[num_n]);  
-    	num_n ++;
-     }   
-     num ++;
-     if (num == data[k]){
-        num = 0;
-    	k ++;
-    	fprintf(fp, "\n");
-     }
-    }
+	for(i = 0; i < 512; i++){
+		if (k == 0 || k == 3 || k == 6 || k == 7 || k == 9 )
+		{
+			fprintf(fp, "%c", data_ascii[num_a]);  
+			num_a ++;
+		}
+		else {
+			fprintf(fp, "%d", data_number[num_n]);  
+			num_n ++;
+		}   
+		num ++;
+		if (num == data[k]){
+			num = 0;
+			k ++;
+			fprintf(fp, "\n");
+		}
+	}
 
     num = 0;
 	fprintf(fp, "%-5d ", num_data);
@@ -108,10 +108,10 @@ int main()
 			num++;
 			if (num == data[10]){
 				num_data ++;
-                fprintf(fp, "\n");
+				fprintf(fp, "\n");
 				fprintf(fp, "%-5d ", num_data);
-                num = 0;
-            }
+				num = 0;
+            		}
 		}
 	}
 	
