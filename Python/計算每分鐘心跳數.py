@@ -2,10 +2,6 @@ import matplotlib.pyplot as plt
 import numpy as np
  
 f = open('D:\\test08.raw', 'rb')              #read the data
-k, j ,i ,num = 0, 0, 0, 0
-x1, x2, x3 = 0.055, -0.005, 0.005 
-y1, y2, y3 = 0.0049, -0.0052, 0.0004
-Kp = 1
 
 Data = [[0]*8 for i in range(12500)]
 raw_data_format = [0]*600  
