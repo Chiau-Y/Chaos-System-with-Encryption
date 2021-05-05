@@ -21,9 +21,9 @@ int main()
 	
 	char path[256] = "D:\\test01.raw";                 //read the data
 	char outpath[256] = "D:\\Master\\123.txt";    //save the data
-    int data[11] = {10, 2, 1, 21, 2, 2, 16, 256, 2, 200, 8};
+   	int data[11] = {10, 2, 1, 21, 2, 2, 16, 256, 2, 200, 8};	// data formation
 	char data_ascii[503];   //10+21+16+256+200
-    int data_number[9];     //2+1+2+2+2
+    	int data_number[9];     //2+1+2+2+2
 
 
 	
